@@ -1,10 +1,8 @@
 import requests
 import threading
-import time 
 
 
 url = "https://api.countapi.xyz/hit/baun" # Your URL Here
-original_time = time.time()
 def do_request():
     while True:
         response = requests.get(url)
