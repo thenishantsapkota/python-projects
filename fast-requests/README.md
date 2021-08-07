@@ -22,4 +22,10 @@ To deploy this project run
   python main.py
 ```
 
+### Change url in this to send request to any website
+```py
+  url = "https://api.countapi.xyz/hit/baun" <-- Change this 
+ ```
+ 
+
   
