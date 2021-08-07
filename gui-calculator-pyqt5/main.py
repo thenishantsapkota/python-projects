@@ -1,32 +1,32 @@
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import  *
-import sys
 import math
+import sys
 import time
 
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
 from PyQt5.uic import loadUiType
 
-ui,_ = loadUiType('calculator.ui')
+ui, _ = loadUiType("calculator.ui")
 
-class MainApp(QMainWindow , ui):
+
+class MainApp(QMainWindow, ui):
     def __init__(self):
         QMainWindow.__init__(self)
         self.setupUi(self)
         self.Handle_UI_Changes()
         self.Handle_Buttons()
-        #self.Dark_Blue_Theme()
-        
-    
+        # self.Dark_Blue_Theme()
+
     def Handle_UI_Changes(self):
         self.lineEdit.setEnabled(False)
-    
+
     def Handle_Buttons(self):
         self.pushButton.clicked.connect(self.Backspace)
         self.pushButton_2.clicked.connect(self.Press_C)
-        #self.pushButton_2.clicked.connect(self.Backspace)
+        # self.pushButton_2.clicked.connect(self.Backspace)
         self.pushButton_3.clicked.connect(self.Off)
-        #self.pushButton_4.clicked.connect(self.Backspace)
+        # self.pushButton_4.clicked.connect(self.Backspace)
         self.pushButton_5.clicked.connect(self.Press_8)
         self.pushButton_6.clicked.connect(self.Press_7)
         self.pushButton_7.clicked.connect(self.Press_9)
@@ -53,113 +53,111 @@ class MainApp(QMainWindow , ui):
 
     def Off(self):
         exit(0)
-        
 
     def Backspace(self):
         self.lineEdit.backspace()
-    
+
     def Press_C(self):
         self.lineEdit.clear()
-    
+
     def Press_CE(self):
         self.lineEdit.clear()
-    
+
     def PressPlusMinus(self):
         pass
 
     def Press_9(self):
-        self.lineEdit.insert('9')
-    
+        self.lineEdit.insert("9")
+
     def Press_8(self):
-        self.lineEdit.insert('8')
+        self.lineEdit.insert("8")
 
     def Press_7(self):
-        self.lineEdit.insert('7')
+        self.lineEdit.insert("7")
 
     def Press_6(self):
-        self.lineEdit.insert('6')
+        self.lineEdit.insert("6")
 
     def Press_5(self):
-        self.lineEdit.insert('5')
+        self.lineEdit.insert("5")
 
     def Press_4(self):
-        self.lineEdit.insert('4')
+        self.lineEdit.insert("4")
 
     def Press_3(self):
-        self.lineEdit.insert('3')
+        self.lineEdit.insert("3")
 
     def Press_2(self):
-        self.lineEdit.insert('2')
+        self.lineEdit.insert("2")
 
     def Press_1(self):
-        self.lineEdit.insert('1')
+        self.lineEdit.insert("1")
 
     def Press_0(self):
-        self.lineEdit.insert('0')
-    
+        self.lineEdit.insert("0")
+
     def Press_Plus(self):
-        self.lineEdit.insert('+')
-    
+        self.lineEdit.insert("+")
+
     def Press_Minus(self):
-        self.lineEdit.insert('-')
-    
+        self.lineEdit.insert("-")
+
     def Press_Multiply(self):
-        self.lineEdit.insert('*')
-    
+        self.lineEdit.insert("*")
+
     def Press_Divide(self):
-        self.lineEdit.insert('/')
-    
+        self.lineEdit.insert("/")
+
     def Press_Dot(self):
-        self.lineEdit.insert('.')
-    
+        self.lineEdit.insert(".")
+
     def Press_Sin(self):
-        self.lineEdit.insert('sin ')
-    
+        self.lineEdit.insert("sin ")
+
     def Press_Cos(self):
-        self.lineEdit.insert('cos ')
-    
+        self.lineEdit.insert("cos ")
+
     def Press_Tan(self):
-        self.lineEdit.insert('tan ')
-    
+        self.lineEdit.insert("tan ")
+
     def Press_Power(self):
-        self.lineEdit.insert('^')
-    
+        self.lineEdit.insert("^")
+
     def Press_SQRT(self):
-        self.lineEdit.insert('√')
-    
+        self.lineEdit.insert("√")
+
     def Bracket_Open(self):
-        self.lineEdit.insert('(')
-    
+        self.lineEdit.insert("(")
+
     def Bracket_Close(self):
-        self.lineEdit.insert(')')
-    
+        self.lineEdit.insert(")")
 
     def Press_Equals(self):
         string = self.lineEdit.text()
-        #print(string)
-        
-        if '+' in string:
+        # print(string)
+
+        if "+" in string:
             result = float(eval(string))
             self.lineEdit.setText(str(result))
 
-        if '-' in string:
+        if "-" in string:
             result = float(eval(string))
             self.lineEdit.setText(str(result))
 
-        if '*' in string:
+        if "*" in string:
             result = float(eval(string))
             self.lineEdit.setText(str(result))
-        
-        if '/' in string:
+
+        if "/" in string:
             result = float(eval(string))
             self.lineEdit.setText(str(result))
-        
-        if 'sin' in string:
+
+        if "sin" in string:
             try:
-                partitioned_string = string.partition('sin')
-                #print(partitioned_string)
+                partitioned_string = string.partition("sin")
+                # print(partitioned_string)
                 sine = math.sin(math.radians(float(partitioned_string[2])))
-                if partitioned_string[0] == '':
+                if partitioned_string[0] == "":
                     self.lineEdit.clear()
                     self.lineEdit.setText(str(sine))
 
@@ -169,12 +167,12 @@ class MainApp(QMainWindow , ui):
                     self.lineEdit.setText(str(final_sine))
             except:
                 pass
-        if 'cos' in string:
+        if "cos" in string:
             try:
-                partitioned_string = string.partition('cos')
-                #print(partitioned_string)
+                partitioned_string = string.partition("cos")
+                # print(partitioned_string)
                 cosine = math.cos(math.radians(float(partitioned_string[2])))
-                if partitioned_string[0] == '':
+                if partitioned_string[0] == "":
                     self.lineEdit.clear()
                     self.lineEdit.setText(str(cosine))
 
@@ -184,13 +182,13 @@ class MainApp(QMainWindow , ui):
                     self.lineEdit.setText(str(final_cosine))
             except:
                 pass
-        
-        if 'tan' in string:
+
+        if "tan" in string:
             try:
-                partitioned_string = string.partition('tan')
-                #print(partitioned_string)
+                partitioned_string = string.partition("tan")
+                # print(partitioned_string)
                 tan = math.tan(math.radians(float(partitioned_string[2])))
-                if partitioned_string[0] == '':
+                if partitioned_string[0] == "":
                     self.lineEdit.clear()
                     self.lineEdit.setText(str(tan))
 
@@ -200,28 +198,28 @@ class MainApp(QMainWindow , ui):
                     self.lineEdit.setText(str(final_tan))
             except:
                 pass
-        
-        if '^' in string:
+
+        if "^" in string:
             try:
-                partitioned_string = string.partition('^')
-                #print(partitioned_string)
+                partitioned_string = string.partition("^")
+                # print(partitioned_string)
                 power = pow(float(partitioned_string[0]), float(partitioned_string[2]))
-                #print(power)
+                # print(power)
                 self.lineEdit.clear()
                 self.lineEdit.setText(str(power))
-            
+
             except:
                 pass
-        
-        if '√' in string:
+
+        if "√" in string:
             try:
-                partitioned_string = string.partition('√')
-                #print(partitioned_string)
+                partitioned_string = string.partition("√")
+                # print(partitioned_string)
                 square_root = math.sqrt(float(partitioned_string[2]))
-                if partitioned_string[0] == '':
+                if partitioned_string[0] == "":
                     self.lineEdit.clear()
                     self.lineEdit.setText(str(square_root))
-                
+
                 else:
                     final_sqrt = float(square_root) * float(partitioned_string[0])
                     self.lineEdit.clear()
@@ -230,19 +228,19 @@ class MainApp(QMainWindow , ui):
 
             except:
                 pass
-            
-    #def Dark_Blue_Theme(self):
-        #style = open('themes/darkblue.css' , 'r')
-        #style = style.read()
-        #self.setStyleSheet(style)
 
-            
+    # def Dark_Blue_Theme(self):
+    # style = open('themes/darkblue.css' , 'r')
+    # style = style.read()
+    # self.setStyleSheet(style)
+
+
 def main():
     app = QApplication(sys.argv)
     window = MainApp()
     window.show()
     app.exec_()
 
+
 if __name__ == "__main__":
     main()
-        

@@ -1,13 +1,15 @@
-import requests
 import threading
 
+import requests
 
-url = "https://api.countapi.xyz/hit/baun" # Your URL Here
+url = "https://api.countapi.xyz/hit/baun"  # Your URL Here
+
+
 def do_request():
     while True:
         response = requests.get(url)
         print(response)
-        
+
 
 threads = []
 
